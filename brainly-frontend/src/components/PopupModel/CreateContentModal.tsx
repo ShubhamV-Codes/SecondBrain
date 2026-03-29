@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+const API = import.meta.env.VITE_API_URL;
 interface InputProps {
   placeholder: string;
   value: string;
@@ -54,13 +54,13 @@ export function CreateContentModal({ open, onClose, onAdd }: CreateContentModalP
     try {
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:3000/api/v1/content", {
+      const res = await fetch(`${API}/api/v1/content`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,  // sends your JWT
         },
-        body: JSON.stringify({ title: title.trim(), link: link.trim(), type }),
+        body: JSON.stringify({ title: title.trim(), link: link.trim() }),
       });
 
       const data = await res.json();

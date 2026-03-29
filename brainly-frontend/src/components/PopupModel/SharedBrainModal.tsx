@@ -6,7 +6,7 @@ interface SharedBrainModalProps {
 }
 
 export const SharedBrainModal = ({ hash, onClose }: SharedBrainModalProps) => {
-  const shareLink = `http://localhost:5173/brain/${hash}`;
+  const shareLink = `${import.meta.env.VITE_API_URL}/brain/${hash}`;
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {

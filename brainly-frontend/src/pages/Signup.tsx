@@ -12,6 +12,8 @@ export const Signup = () => {
   const passwordsMatch = confirmPassword.length > 0 && password === confirmPassword;
   const passwordsMismatch = confirmPassword.length > 0 && password !== confirmPassword;
 
+  const API = import.meta.env.VITE_API_URL;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (password !== confirmPassword) {
@@ -22,7 +24,7 @@ export const Signup = () => {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:3000/api/v1/signup", {
+      const res = await fetch(`${API}/api/v1/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),

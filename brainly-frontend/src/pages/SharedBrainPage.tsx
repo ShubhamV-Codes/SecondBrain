@@ -10,8 +10,8 @@ interface ContentItem {
   link: string;
   type: ContentType;
 }
-
-const API = "http://localhost:3000/api/v1";
+const APIURL = import.meta.env.VITE_API_URL;
+const API = `${APIURL}/api/v1`;
 
 const fallbackType = (type: string): ContentType => {
   const valid = ["document", "youtube", "twitter", "link"];
