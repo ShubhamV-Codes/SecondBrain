@@ -60,7 +60,7 @@ export function CreateContentModal({ open, onClose, onAdd }: CreateContentModalP
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`,  // sends your JWT
         },
-        body: JSON.stringify({ title: title.trim(), link: link.trim() }),
+        body: JSON.stringify({ title: title.trim(), link: link.trim(), type}),
       });
 
       const data = await res.json();
