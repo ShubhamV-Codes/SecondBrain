@@ -17,7 +17,7 @@ const app = express();
 
 // ✅ cors first, before everything
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: process.env.FRONTEND_URL || "http://localhost:5173" ,
     credentials: true
 }));
 
@@ -25,6 +25,7 @@ app.use(express.json());
 
 connectDB();
 
+app.get("/health", (req, res) => res.json({ status: "ok" }));//For Crone-Job (10 minutely) to keep the free-tier Render Server Awake.
 app.use("/api/v1", userSignupRouter);
 app.use("/api/v1", userSigninRouter);
 app.use("/api/v1/content", userMiddleware, postContentRouter);

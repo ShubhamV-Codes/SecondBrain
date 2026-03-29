@@ -21,9 +21,9 @@ router.delete("/", async(req, res)=>{
 
     }
     catch(e){
-        console.log("Error Occured", e);
+        console.log("error occured during deletion", e);
         return res.status(500).json({
-            message:"EInternal Server Error"
+            message:"Internal Server Error"
         })
     }
 });

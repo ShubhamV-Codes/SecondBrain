@@ -2,9 +2,8 @@ import { randomBytes } from "crypto";
 import {ShareModel} from "../schema/shareSchema.js"
 import express from "express";
 
-const PORT = process.env.PORT;
-// const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`
 const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
+
 const router = express.Router();
 
 router.post("/", async(req, res)=>{
