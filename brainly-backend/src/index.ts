@@ -27,10 +27,10 @@ connectDB();
 
 app.use("/api/v1", userSignupRouter);
 app.use("/api/v1", userSigninRouter);
-app.use("/api/v1", userMiddleware, postContentRouter);
-app.use("/api/v1", userMiddleware, getContentRouter);
-app.use("/api/v1", userMiddleware, deleteContentRouter);
-app.use("/api/v1/brain", userMiddleware, shareContentRouter);
+app.use("/api/v1/content", userMiddleware, postContentRouter);
+app.use("/api/v1/content", userMiddleware, getContentRouter);
+app.use("/api/v1/delete", userMiddleware, deleteContentRouter);
+app.use("/api/v1/brain/share", userMiddleware, shareContentRouter);
 app.use("/api/v1/brain", contentLinkRouter);
 
 app.listen(PORT, () => {

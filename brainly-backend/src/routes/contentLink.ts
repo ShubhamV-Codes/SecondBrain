@@ -1,59 +1,62 @@
 import {ShareModel} from "../schema/shareSchema.js"
 import {ContentModel} from "../schema/contentSchema.js"
+import express, {type Request, type Response, type NextFunction } from "express";
 
-import express from "express";
 const router = express.Router();
 
-router.get("/:shareLink", async(req, res)=>{
+router.get("/view/:shareLink", async(req: Request, res: Response, next: NextFunction) => {
     try{
-        const{shareLink}=req.params;
+        const { shareLink } = req.params;
 
-        if(!shareLink || shareLink.length <10){
+        // ✅ Pass to next router instead of blocking
+        if (shareLink === "share") {
+            return next();
+        }
+
+        if(!shareLink || shareLink.length < 10){
             return res.status(400).json({
-                success:false,
-                message:"Invalid link"
-            })
+                success: false,
+                message: "Invalid link"
+            });
         }
          
         const share = await ShareModel.findOne({
-            hash:shareLink,
-            isShared:true
+            hash: shareLink,
+            isShared: true
         }).select("userId expiresAt");
 
         if(!share){
             return res.status(404).json({
-                success:false,
-                message:"Link is Invalid or disabled"
-            })
+                success: false,
+                message: "Link is Invalid or disabled"
+            });
         }
-
-        // Check if link present and it expires or not
 
         if(share.expiresAt && share.expiresAt < new Date()){
             return res.status(403).json({
-                success:false,
-                message:"Link Expired"
+                success: false,
+                message: "Link Expired"
             });
         }
 
         const content = await ContentModel.find({
-            userId:share.userId
+            userId: share.userId
         }).sort({_id: -1}).limit(50).lean();
 
         return res.json({
-            success:true,
-            data:{
+            success: true,
+            data: {
                 content,
-                count:content.length
+                count: content.length
             }
         });
     }
     catch(err){
         return res.status(500).json({
-            success:false,
-            message:"Internal Server Error"
+            success: false,
+            message: "Internal Server Error"
         });
     }
-})
+});
 
 export default router;

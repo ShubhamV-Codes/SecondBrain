@@ -3,11 +3,11 @@ import {ShareModel} from "../schema/shareSchema.js"
 import express from "express";
 
 const PORT = process.env.PORT;
-const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`
-
+// const BASE_URL = process.env.BASE_URL || `http://localhost:${PORT}`
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 const router = express.Router();
 
-router.post("/share", async(req, res)=>{
+router.post("/", async(req, res)=>{
     try{
      const {share} = req.body;
      //@ts-ignore
@@ -57,12 +57,13 @@ router.post("/share", async(req, res)=>{
         });
     }
     // If ON - Return Link
-    return res.status(200).json({
-        success:true,
-        data:{
-            shareLink:`${BASE_URL}/api/v1/brain/${existing.hash}`
-        }
-    })
+    
+return res.status(200).json({
+  success: true,
+  data: {
+    shareLink: `${FRONTEND_URL}/brain/${existing.hash}`
+  }
+});
 }catch(e){
       return res.status(500).json({
         success:false,

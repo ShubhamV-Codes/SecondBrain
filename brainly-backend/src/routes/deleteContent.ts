@@ -2,7 +2,7 @@ import express from "express";
 const router = express.Router();
 import {ContentModel} from "../schema/contentSchema.js"
 
-router.delete("/delete", async(req, res)=>{
+router.delete("/", async(req, res)=>{
     try{
      const contentId = req.body.contentId;
      const result = await ContentModel.deleteOne({
