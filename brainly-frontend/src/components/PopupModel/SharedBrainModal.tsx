@@ -4,9 +4,9 @@ interface SharedBrainModalProps {
   hash: string;
   onClose: () => void;
 }
-
+const FRONTEND_URL="https://neuro-vault-cyan.vercel.app"
 export const SharedBrainModal = ({ hash, onClose }: SharedBrainModalProps) => {
-  const shareLink = `${import.meta.env.VITE_API_URL}/brain/${hash}`;
+  const shareLink = `${FRONTEND_URL}/brain/${hash}`;
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
