@@ -114,9 +114,7 @@ export const Signin = () => {
               <label className="block text-xs font-semibold text-blue-400/60 uppercase tracking-widest">
                 Password
               </label>
-              <a href="/forgot-password" className="text-xs text-blue-500 hover:text-blue-400 transition font-medium">
-                Forgot password?
-              </a>
+              
             </div>
             <div className="relative">
               <input
