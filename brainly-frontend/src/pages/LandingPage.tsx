@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type FC } from "react";
 import { useNavigate } from "react-router-dom";
 
 // ── Typewriter hook ────────────────────────────────────────────────────────
-const WORDS = ["Links", "Tweets", "Videos", "Documents", "Ideas"];
+const WORDS = ["Links", "Docs", "Ideas"];
 
 const useTypewriter = () => {
   const [idx,  setIdx]  = useState(0);

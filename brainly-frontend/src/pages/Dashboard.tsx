@@ -179,19 +179,31 @@ export const Dashboard: FC = () => {
       </div>
 
       {/* Sign out */}
-      <div className="px-3 py-4 border-t border-white/5">
-        <button
-          onClick={() => { localStorage.removeItem("token"); window.location.href = "/signin"; }}
-          className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-gray-500
-                     hover:text-red-400 hover:bg-red-500/10 border border-transparent
-                     hover:border-red-500/20 transition-all duration-200"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-            <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
-          </svg>
-          Sign out
-        </button>
-      </div>
+      {/* Home + Sign out */}
+<div className="px-3 py-4 border-t border-white/5 space-y-1">
+  <button
+    onClick={() => { window.location.href = "/"; }}
+    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-gray-500
+               hover:text-blue-300 hover:bg-blue-500/10 border border-transparent
+               hover:border-blue-500/20 transition-all duration-200"
+  >
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <path d="M3 12L12 3l9 9M4 10v10a1 1 0 001 1h5v-6h4v6h5a1 1 0 001-1V10"/>
+    </svg>
+    Home
+  </button>
+  <button
+    onClick={() => { localStorage.removeItem("token"); window.location.href = "/signin"; }}
+    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm text-gray-500
+               hover:text-red-400 hover:bg-red-500/10 border border-transparent
+               hover:border-red-500/20 transition-all duration-200"
+  >
+    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+    </svg>
+    Sign out
+  </button>
+</div>
     </>
   );
 
