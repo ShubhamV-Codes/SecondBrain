@@ -2,8 +2,9 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Signin } from "./pages/Signin";
 import { Signup } from "./pages/Signup";
 import { Dashboard } from "./pages/Dashboard";
-import { LandingPage } from "./pages/LandingPage"; // ← add this
-import { SharedBrainPage } from "./pages/SharedBrainPage"; // ← add this
+import { NotFound } from "./pages/404Handler";
+import { LandingPage } from "./pages/LandingPage";
+import { SharedBrainPage } from "./pages/SharedBrainPage";
 import type { JSX } from "react/jsx-dev-runtime";
 
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
@@ -27,6 +28,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path = "*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
