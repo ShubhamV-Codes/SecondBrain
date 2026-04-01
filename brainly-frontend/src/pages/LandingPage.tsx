@@ -11,7 +11,7 @@ const useTypewriter = () => {
 
   useEffect(() => {
     const target = WORDS[idx % WORDS.length];
-    const speed  = del ? 60 : 110;
+    const speed  = del ? 80 : 110;
     const timer  = setTimeout(() => {
       if (!del) {
         const next = target.slice(0, text.length + 1);
