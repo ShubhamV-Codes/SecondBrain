@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/brain/:hash" element={<SharedBrainPage />} /> {/* ← add this */}
+        <Route path="/brain/:hash" element={<SharedBrainPage />} />
         <Route
           path="/dashboard"
           element={

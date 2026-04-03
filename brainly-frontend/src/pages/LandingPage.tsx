@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-// ── Typewriter hook ────────────────────────────────────────────────────────
+// Typewriter hook
 const WORDS = ["Links", "Docs", "Ideas"];
 
 const useTypewriter = () => {
@@ -28,8 +28,7 @@ const useTypewriter = () => {
 
   return text;
 };
-
-// ── Constellation canvas ───────────────────────────────────────────────────
+//  Constellation canvas
 const StarCanvas: FC = () => {
   const ref = useRef<HTMLCanvasElement>(null);
 
@@ -88,7 +87,7 @@ const StarCanvas: FC = () => {
   );
 };
 
-// ── Brain SVG ──────────────────────────────────────────────────────────────
+// Brain SVG 
 const BrainIcon: FC<{ className?: string }> = ({ className }) => (
   <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
     <path
@@ -113,7 +112,7 @@ const BrainIcon: FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 
-// ── Feature card ───────────────────────────────────────────────────────────
+// Feature card
 interface FeatureProps { icon: React.ReactNode; title: string; desc: string }
 const FeatureCard: FC<FeatureProps> = ({ icon, title, desc }) => (
   <div className="rounded-2xl p-6 bg-blue-950/30 border border-blue-900/40
@@ -129,7 +128,7 @@ const FeatureCard: FC<FeatureProps> = ({ icon, title, desc }) => (
   </div>
 );
 
-// ── Stat pill ──────────────────────────────────────────────────────────────
+//Stat pill 
 const StatPill: FC<{ value: string; label: string }> = ({ value, label }) => (
   <div className="flex flex-col items-center px-6 py-3 rounded-2xl
                   bg-blue-950/40 border border-blue-800/30 backdrop-blur-sm">
@@ -138,7 +137,7 @@ const StatPill: FC<{ value: string; label: string }> = ({ value, label }) => (
   </div>
 );
 
-// ── Main ───────────────────────────────────────────────────────────────────
+//Main 
 export const LandingPage: FC = () => {
   const navigate = useNavigate();
   const word     = useTypewriter();
